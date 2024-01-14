@@ -18,11 +18,21 @@
 </head>
 
 <body>
+    <button onclick="showcompanyform()">add company</button>
+    <form name="addcompanyform" id="addcompanyform" style="display: none;">
+        <input type="text" placeholder="company name" name="name"></input>
+        <input type="number" placeholder="company price" name="price"></input>
+        <input type="checkbox" name="isuscompany" id="isuscompany"></input>
+        <label for="isuscompany">is us company</label>
+        <input type="text" name="ticker" placeholder="ticker"></input>
+        <button type="button" onclick="submitform()">submit</button>
+    </form>
     <table>
         <thead>
             <tr>
                 <th>ticker</th>
                 <th>price</th>
+                <th>is us company</th>
                 <th>amount</th>
                 <th>value</th>
                 <th></th>
