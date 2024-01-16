@@ -25,10 +25,11 @@ function generateTable() {
         let companyprice = document.createElement('td');
         companyprice.innerText = company.price;
         let isuscompany = document.createElement('td');
-        isuscompany.innerText = company.isuscompany;
+        isuscompany.innerText = company.isuscompany ? 'yes' : 'no';
         let btntd = document.createElement('td');
         let btn = document.createElement('button');
         btntd.append(btn);
+
 
         trelement.append(companyTicker);
         trelement.append(companyprice);
@@ -38,23 +39,6 @@ function generateTable() {
         tablebodyelement.append(trelement);
         
     }
-
-    //let HTMLTEXT = '';
-    //for (let i = 0; i < companies.length; i++) {
-    //    let company = companies[i];
-//
-  //      HTMLTEXT += `<tr>
-    //    <td>${company.ticker}</td>
-      //  <td>${company.price}</td>
-        //<td>${company.isuscompany ? 'yes' : 'no'}</td>
-//        <td>${company.amount}</td>
-  //      <td>${company.price * company.amount}</td>
-    //    <td>
-      //      <button onclick="buystock(${i})">buy more</button>
-//        </td>
-  //  </tr>`}
-
- //   document.getElementById('table-body').innerHTML = HTMLTEXT;
 }
 generateTable();
 
