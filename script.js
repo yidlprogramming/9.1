@@ -15,22 +15,46 @@ let companies = [
 
 function generateTable() {
     // with code to create the table teh list of companies
-    let HTMLTEXT = '';
+    let tablebodyelement = document.getElementById('table-body')
+
     for (let i = 0; i < companies.length; i++) {
-        let company = companies[i];
+        const company = companies[i];
+        let trelement = document.createElement('tr');
+        let companyTicker = document.createElement('td');
+        companyTicker.innerText = company.ticker;
+        let companyprice = document.createElement('td');
+        companyprice.innerText = company.price;
+        let isuscompany = document.createElement('td');
+        isuscompany.innerText = company.isuscompany;
+        let btntd = document.createElement('td');
+        let btn = document.createElement('button');
+        btntd.append(btn);
 
-        HTMLTEXT += `<tr>
-        <td>${company.ticker}</td>
-        <td>${company.price}</td>
-        <td>${company.isuscompany ? 'yes' : 'no'}</td>
-        <td>${company.amount}</td>
-        <td>${company.price * company.amount}</td>
-        <td>
-            <button onclick="buystock(${i})">buy more</button>
-        </td>
-    </tr>`}
+        trelement.append(companyTicker);
+        trelement.append(companyprice);
+        trelement.append(isuscompany);
+        trelement.append(btntd);
+        
+        tablebodyelement.append(trelement);
+        
+    }
 
-    document.getElementById('table-body').innerHTML = HTMLTEXT;
+    //let HTMLTEXT = '';
+    //for (let i = 0; i < companies.length; i++) {
+    //    let company = companies[i];
+//
+  //      HTMLTEXT += `<tr>
+    //    <td>${company.ticker}</td>
+      //  <td>${company.price}</td>
+        //<td>${company.isuscompany ? 'yes' : 'no'}</td>
+//        <td>${company.amount}</td>
+  //      <td>${company.price * company.amount}</td>
+    //    <td>
+      //      <button onclick="buystock(${i})">buy more</button>
+//        </td>
+  //  </tr>`}
+
+ //   document.getElementById('table-body').innerHTML = HTMLTEXT;
 }
 generateTable();
 
