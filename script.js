@@ -20,26 +20,28 @@ function generateTable() {
     for (let i = 0; i < companies.length; i++) {
         const company = companies[i];
         let trelement = document.createElement('tr');
-        let companyTicker = document.createElement('td');
-        companyTicker.innerText = company.ticker;
-        let companyprice = document.createElement('td');
-        companyprice.innerText = company.price;
-        let isuscompany = document.createElement('td');
-        isuscompany.innerText = company.isuscompany ? 'yes' : 'no';
+        createandappend(trelement, company.ticker);
+        createandappend(trelement, company.price);
+        createandappend(trelement, company.isuscompany ? 'yes' : 'no');
+
         let btntd = document.createElement('td');
         let btn = document.createElement('button');
         btntd.append(btn);
 
 
-        trelement.append(companyTicker);
-        trelement.append(companyprice);
-        trelement.append(isuscompany);
         trelement.append(btntd);
         
         tablebodyelement.append(trelement);
         
     }
 }
+
+function createandappend(trelement, innerText) {
+    let tdElement = document.createElement('td');
+    tdElement.innerText = innerText;
+    trelement.append(tdElement);
+}
+
 generateTable();
 
 function buystock(index) {
@@ -58,6 +60,8 @@ function buystock(index) {
     }
 
 }
+
+
 
 function showcompanyform() {
     document.getElementById('addcompanyform').style.display = 'block';
