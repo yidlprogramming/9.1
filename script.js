@@ -8,7 +8,7 @@ let companies = [
     {
         ticker: "AMZN",
         price: 96.24,
-        amount: 1,
+        amount: 0,
         isuscompany: true,
     }
 ];
@@ -16,23 +16,31 @@ let companies = [
 function generateTable() {
     // with code to create the table teh list of companies
     let tablebodyelement = document.getElementById('table-body')
+    tablebodyelement.innerHTML = null;
 
     for (let i = 0; i < companies.length; i++) {
         const company = companies[i];
         let trelement = document.createElement('tr');
+        
         createandappend(trelement, company.ticker);
         createandappend(trelement, company.price);
         createandappend(trelement, company.isuscompany ? 'yes' : 'no');
+        createandappend(trelement, company.amount);
 
         let btntd = document.createElement('td');
         let btn = document.createElement('button');
         btntd.append(btn);
 
+        btn.innerText = company.amount ? 'Buy More' : 'Buy';
+
+        btn.addEventListener('click', function(){
+            buystock(i)
+        });
 
         trelement.append(btntd);
-        
+
         tablebodyelement.append(trelement);
-        
+
     }
 }
 
@@ -71,9 +79,10 @@ function submitform() {
     let formElement = document.getElementById('addcompanyform');
     let fd = new FormData(formElement);
     let company = {};
+    company.amount = Number(0)
     company.name = fd.get('name');
     company.price = fd.get('price');
-    company.isuscompany = fd.get('isuscompany' == 'on');
+    company.isuscompany = fd.get('isuscompany');
     company.ticker = fd.get('ticker');
     companies.push(company);
     generateTable();
